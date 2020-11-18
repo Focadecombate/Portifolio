@@ -27,24 +27,45 @@ export const Sobre: React.FC = () => {
             </Typography>
           </Grid>
           <Grid item lg={6} xs={6}>
-            <Typography variant="h4">Objetivos</Typography>
-            <Typography>
-              Trabalhar na área de desenvolvimento e análise de sistemas como
-              FullStack, além de possuir grande interesse na parte de design
-              UI/UX.
-            </Typography>
-            <Typography>Tirar certificações na área</Typography>
-            <Typography variant="h4" style={{ marginTop: 32 }}>
-              Resumo Profissional
-            </Typography>
-            <Typography>
-              Eu sou muito determinado e me esforço ao máximo a fazer as minhas
-              determinações e mais, disposto a ajudar e trabalhar em equipe, a
-              procura de aprender mais nesse mundo de desenvolvimento e me
-              tornar FullStack, Gosto bastante também da área de design grafico
-              pra redes sociais uma vez que já estagiei nessa área, formação em
-              inglês com diploma da universidade de Cambridge no nivel FCE B2.
-            </Typography>
+            <Grid item xs={12}>
+              <Typography variant="h4">Paixões</Typography>
+              <Typography>
+                Ti em geral, começei a mexer desde criança e foram inumeras
+                vezes que tive de levar o computador pra formatar pois eu
+                conseguia corromper o windows, logo aprendir a fazer eu mesmo e
+                assim começou essa relação com o mundo tech!
+              </Typography>
+              <Typography style={{ marginTop: 8 }}>
+                Música, foi meu escape do stress do 3° ano e um dos meios que eu
+                utilizo para manter a criatividade em dia! Sou cheio dos
+                instrumentos de guitarra a cavaco e o gosto musical tambem é por
+                ai rsrsrs.
+              </Typography>
+              <Typography style={{ marginTop: 8 }}>
+                Gosto bastante do Automobilismo, domingo é dia de acordar cedo
+                pra ver a Formula 1 ! Além disso estou restaurando um Honda Civic
+                95 :)
+              </Typography>
+            </Grid>
+            <Grid item xs={12} style={{ marginTop: 32 }}>
+              <Typography variant="h4">Resumo Profissional</Typography>
+              <Typography>
+                Eu sou muito determinado e me esforço ao máximo a fazer as
+                minhas determinações e mais, disposto a ajudar e trabalhar em
+                equipe, a procura de aprender mais nesse mundo de
+                desenvolvimento, Gosto bastante também da área de design de
+                UI/UX. Possuo formação em inglês com diploma da universidade de
+                Cambridge no nivel FCE B2.
+              </Typography>
+            </Grid>
+            <Grid item xs={12} style={{ marginTop: 32 }}>
+              <Typography variant="h4">Objetivos</Typography>
+              <Typography>
+                Trabalhar na área de desenvolvimento e análise de sistemas como
+                FullStack, além de possuir grande interesse na parte de design
+                UI/UX.
+              </Typography>
+            </Grid>
           </Grid>
           <Grid container item lg={6} xs={12} spacing={2} alignContent="center">
             <img
