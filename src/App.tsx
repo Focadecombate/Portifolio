@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Paper } from "@material-ui/core";
+import { Home } from "./Page/Home";
+import { ThemeProvider } from "./utils/ThemeProvider";
+import { LanguageProvider } from "./utils/LanguageProvider";
+import { BrowserRouter, Switch } from "react-router-dom";
+import Webfont from "webfontloader";
 
-function App() {
+Webfont.load({
+  google: {
+    families: ["Staatliches", "Space Grotesk"],
+  },
+});
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider>
+      <LanguageProvider>
+        <BrowserRouter>
+          <Switch>
+            <Paper
+              style={{
+                borderRadius: 0,
+                overflowX: "hidden",
+                height: "100vh",
+              }}
+            >
+              <Home />
+            </Paper>
+          </Switch>
+        </BrowserRouter>
+      </LanguageProvider>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
