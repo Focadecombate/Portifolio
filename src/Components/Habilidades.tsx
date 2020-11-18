@@ -22,13 +22,29 @@ export const Habilidades: React.FC = () => {
       name: "Node Js",
       progress: 80,
       description:
-        "Linguagem de BACK-END que mais tenho familiaridade e que mais usei em projetos pessoais e trabalho.",
+        "Linguagem que mais tenho familiaridade e que mais usei em projetos pessoais e trabalho.",
+    },
+    {
+      name: "Nest Js",
+      progress: 80,
+      description:
+        "Meu framework favorito de Back-end, deu um trabalinho pra aprender mas é incrivél!",
     },
     {
       name: "Python",
-      progress: 80,
+      progress: 50,
+      description: "Minha primeira linguagem de programação s2.",
+    },
+    {
+      name: "MongoDb",
+      progress: 70,
+      description: "Meu banco de dados favorito pela sua simplicidade.",
+    },
+    {
+      name: "Postgres",
+      progress: 50,
       description:
-        "Minha primeira linguagem de programação s2.",
+        "O banco de dados relacionais que escolhi para complementar o mongo.",
     },
   ];
   const frontend: HabilidadeText[] = [
@@ -41,33 +57,98 @@ export const Habilidades: React.FC = () => {
     {
       name: "Material Ui",
       progress: 70,
-      description: "Otimos componentes como base! ",
+      description: "Otimos componentes! ",
     },
     {
       name: "Redux Js",
       progress: 60,
-      description: "Uma das melhores maneiras de tratar propriedades globais.",
+      description:
+        "Quando o context api não dá conta ou os estados estão bagunçados.",
     },
     {
       name: "Typescript",
       progress: 70,
       description: "A melhor evolução do Javascript, não vivo sem!",
     },
+    {
+      name: "React Native",
+      progress: 60,
+      description: "React pro mobile?! Genial!",
+    },
+    {
+      name: "React Spring",
+      progress: 40,
+      description: "Animationssss!!!",
+    },
   ];
   const devops: HabilidadeText[] = [
     {
-      name: "Node Js",
-      progress: 80,
+      name: "Docker",
+      progress: 60,
       description:
-        "Linguagem de BACK-END que mais tenho familiaridade e que mais usei em projetos pessoais e trabalho.",
+        'Melhor solução para acabar com a fabula "ah no meu pc roda".',
+    },
+    {
+      name: "Kubernetes",
+      progress: 30,
+      description: "Precisa escalar um projeto? Ta aqui a bazooka!",
+    },
+    {
+      name: "Linux",
+      progress: 80,
+      description: "As nuvens filho, são tudo servidores linux.",
+    },
+    {
+      name: "Ansible",
+      progress: 40,
+      description: "Automatizar a automatização.",
+    },
+    {
+      name: "CI/CD",
+      progress: 60,
+      description: "Já deu de subir zip no servidor né?!",
+    },
+    {
+      name: "Redis",
+      progress: 60,
+      description: "Cache é vida.",
     },
   ];
   const design: HabilidadeText[] = [
     {
-      name: "Node Js",
+      name: "Photoshop",
       progress: 80,
-      description:
-        "Linguagem de BACK-END que mais tenho familiaridade e que mais usei em projetos pessoais e trabalho.",
+      description: "Mexo desde os 14 pra fazer uns memes e umas artes.",
+    },
+    {
+      name: "XD",
+      progress: 80,
+      description: "Meu programa favorito pra UI/UX.",
+    },
+    {
+      name: "Figma",
+      progress: 60,
+      description: "Tentando roubar a vaga de programa favorito de UI/UX.",
+    },
+    {
+      name: "Ilustrator",
+      progress: 70,
+      description: "Falou vetor falou ilustrator!",
+    },
+    {
+      name: "Premiere",
+      progress: 70,
+      description: "Comecei a usar pra editar os curtas do colégio.",
+    },
+    {
+      name: "After Effects",
+      progress: 50,
+      description: "O rei dos green screen.",
+    },
+    {
+      name: "Cinema 4d",
+      progress: 40,
+      description: "Amava fazer uns textos em 3D pra umas intro do youtube.",
     },
   ];
 
@@ -112,7 +193,7 @@ export const Habilidades: React.FC = () => {
           </Grid>
           <Grid item lg={3} xs={3} style={{ marginTop: 16 }}>
             <Typography variant="h4">DESIGN</Typography>
-            {devops.map((habilidade) => (
+            {design.map((habilidade) => (
               <>
                 <Grid item xs={12}>
                   <Habilidade {...habilidade} />
