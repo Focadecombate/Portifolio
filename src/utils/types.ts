@@ -11,3 +11,11 @@ export interface HabilidadeText {
     progress: number;
     description: string;
 }
+
+export interface TextoLinhaTempo {
+    esquerda?: string;
+    direita?: string;
+}
+export interface TextosLinhaTempo {
+    textos: TextoLinhaTempo[]
+}

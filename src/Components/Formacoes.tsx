@@ -83,7 +83,7 @@ export const Formacoes: React.FC = () => {
           </Grid>
           <Grid item lg={12} xs={12} style={{ textAlign: "center" }}>
             {texts.map((text) => (
-              <div style={{ marginTop: 16 }}>
+              <div key={text.curso} style={{ marginTop: 16 }}>
                 <Formacao {...text} />
               </div>
             ))}

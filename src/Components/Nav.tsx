@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Container } from "@material-ui/core/";
 import { makeStyles } from "@material-ui/core/styles";
 import { useUpdateTheme } from "../utils/ThemeProvider";
@@ -23,12 +23,15 @@ export const Nav: React.FC = () => {
   }));
 
   const navLinks = [
+    { title: "Inicio", link: "#inicio" },
     { title: "Sobre Mim", link: "#sobre" },
     { title: "Formações", link: "#formacoes" },
     { title: "Habilidades", link: "#habilidades" },
     { title: "Experiência", link: "#experiencia" },
     { title: "Contato", link: "#contato" },
   ];
+
+  const [selected, setSelected] = useState(0);
 
   const classes = useStyles();
   const changeTheme = useUpdateTheme();
@@ -51,23 +54,23 @@ export const Nav: React.FC = () => {
         >
           <StyledTabs
             className={classes.label}
-            textColor="inherit"
+            value={selected}
             aria-label="NavBar"
           >
-            <NavHashLink
-              smooth
-              style={{ textDecoration: "none" }}
-              to={"#inicio"}
-            >
-              <StyledTab label={"Inicio"} style={{ flexGrow: 2 }} />
-            </NavHashLink>
-            {navLinks.map((link) => (
+            {navLinks.map((link, index) => (
               <NavHashLink
                 smooth
                 style={{ textDecoration: "none" }}
                 to={link.link}
+                key={link.link}
               >
-                <StyledTab label={link.title} />
+                <StyledTab
+                  value={index}
+                  onClick={() => {
+                    setSelected(index);
+                  }}
+                  label={link.title}
+                />
               </NavHashLink>
             ))}
             <StyledTab label="Noturno" onClick={changeTheme} />

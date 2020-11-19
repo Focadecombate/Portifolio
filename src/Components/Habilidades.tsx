@@ -2,7 +2,6 @@ import { Grid, Typography } from "@material-ui/core";
 import React from "react";
 import { HabilidadeText } from "../utils/types";
 import { useStyles } from "../utils/useStyles";
-import LinearWithValueLabel from "./BarraProgresso";
 import { Habilidade } from "./Habilidade";
 
 export const Habilidades: React.FC = () => {
@@ -13,6 +12,9 @@ export const Habilidades: React.FC = () => {
       height: "100vh",
       justifyContent: "center",
       marginBottom: 48,
+    },
+    itens: {
+      marginTop: 16,
     },
   });
   const classes = styles();
@@ -28,12 +30,17 @@ export const Habilidades: React.FC = () => {
       name: "Nest Js",
       progress: 80,
       description:
-        "Meu framework favorito de Back-end, deu um trabalinho pra aprender mas é incrivél!",
+        "Me fez aprender muito sobre estrutura de projetos.",
     },
     {
       name: "Python",
       progress: 50,
       description: "Minha primeira linguagem de programação s2.",
+    },
+    {
+      name: "GraphQL",
+      progress: 40,
+      description: "Evolução do REST.",
     },
     {
       name: "MongoDb",
@@ -44,7 +51,7 @@ export const Habilidades: React.FC = () => {
       name: "Postgres",
       progress: 50,
       description:
-        "O banco de dados relacionais que escolhi para complementar o mongo.",
+        "Quando precisa de muitas relações entre tabelas.",
     },
   ];
   const frontend: HabilidadeText[] = [
@@ -55,9 +62,9 @@ export const Habilidades: React.FC = () => {
         "Framework para o Front-End que mais tive contato e foi utilizado para fazer esse site :) ",
     },
     {
-      name: "Material Ui",
+      name: "Typescript",
       progress: 70,
-      description: "Otimos componentes! ",
+      description: "A melhor evolução do Javascript, não vivo sem!",
     },
     {
       name: "Redux Js",
@@ -66,9 +73,9 @@ export const Habilidades: React.FC = () => {
         "Quando o context api não dá conta ou os estados estão bagunçados.",
     },
     {
-      name: "Typescript",
+      name: "Material Ui",
       progress: 70,
-      description: "A melhor evolução do Javascript, não vivo sem!",
+      description: "Otimos componentes! ",
     },
     {
       name: "React Native",
@@ -106,13 +113,18 @@ export const Habilidades: React.FC = () => {
     {
       name: "CI/CD",
       progress: 60,
-      description: "Já deu de subir zip no servidor né?!",
+      description: "Já deu de subir zip no servidor?!",
     },
     {
       name: "Redis",
       progress: 60,
       description: "Cache é vida.",
     },
+/*     {
+      name: "Nginx",
+      progress: 60,
+      description: "Reverse Proxy Top.",
+    }, */
   ];
   const design: HabilidadeText[] = [
     {
@@ -145,27 +157,22 @@ export const Habilidades: React.FC = () => {
       progress: 50,
       description: "O rei dos green screen.",
     },
-    {
-      name: "Cinema 4d",
-      progress: 40,
-      description: "Amava fazer uns textos em 3D pra umas intro do youtube.",
-    },
   ];
 
   return (
     <>
       <div id="habilidades" className={classes.container}>
-        <Grid container spacing={8} alignItems="center" justify="space-evenly">
+        <Grid container spacing={6} alignItems="center" justify="space-evenly">
           <Grid item lg={12} xs={12}>
             <Typography variant="h2" color="secondary">
               Habilidades
             </Typography>
           </Grid>
-          <Grid container item lg={3} xs={3}>
+          <Grid item lg={3} xs={3}>
             <Typography variant="h4">FRONT-END</Typography>
             {frontend.map((habilidade) => (
               <>
-                <Grid item xs={12} style={{ marginTop: 16 }}>
+                <Grid item xs={12} className={classes.itens}>
                   <Habilidade {...habilidade} />
                 </Grid>
               </>
@@ -175,27 +182,27 @@ export const Habilidades: React.FC = () => {
             <Typography variant="h4">BACK-END</Typography>
             {backend.map((habilidade) => (
               <>
-                <Grid item xs={12} style={{ marginTop: 16 }}>
+                <Grid item xs={12} className={classes.itens}>
                   <Habilidade {...habilidade} />
                 </Grid>
               </>
             ))}
           </Grid>
-          <Grid item lg={3} xs={3} style={{ marginTop: 16 }}>
+          <Grid item lg={3} xs={3}>
             <Typography variant="h4">DEVOPS</Typography>
             {devops.map((habilidade) => (
               <>
-                <Grid item xs={12}>
+                <Grid item xs={12} className={classes.itens}>
                   <Habilidade {...habilidade} />
                 </Grid>
               </>
             ))}
           </Grid>
-          <Grid item lg={3} xs={3} style={{ marginTop: 16 }}>
+          <Grid item lg={3} xs={3}>
             <Typography variant="h4">DESIGN</Typography>
             {design.map((habilidade) => (
               <>
-                <Grid item xs={12}>
+                <Grid item xs={12} className={classes.itens}>
                   <Habilidade {...habilidade} />
                 </Grid>
               </>

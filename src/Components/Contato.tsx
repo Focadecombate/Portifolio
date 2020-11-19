@@ -7,9 +7,8 @@ export const Contato: React.FC = () => {
     container: {
       display: "flex",
       flexDirection: "column",
-      height: "100vh",
+      height: "80vh",
       justifyContent: "center",
-      marginBottom: 48,
     },
   });
   const classes = styles();
@@ -17,7 +16,13 @@ export const Contato: React.FC = () => {
   return (
     <>
       <div id="contato" className={classes.container}>
-        <Grid container spacing={8} alignItems="center" justify="space-evenly">
+        <Grid
+          container
+          spacing={8}
+          alignItems="center"
+          style={{ height: "100%" }}
+          justify="space-evenly"
+        >
           <Grid item lg={12} xs={12}>
             <Typography variant="h2" color="secondary">
               Contato

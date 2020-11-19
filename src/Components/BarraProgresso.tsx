@@ -6,7 +6,7 @@ import LinearProgress, {
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 
-function LinearProgressWithLabel(
+export function LinearProgressWithLabel(
   props: LinearProgressProps & { value: number }
 ) {
   return (

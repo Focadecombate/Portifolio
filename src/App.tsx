@@ -3,7 +3,7 @@ import { Paper } from "@material-ui/core";
 import { Home } from "./Page/Home";
 import { ThemeProvider } from "./utils/ThemeProvider";
 import { LanguageProvider } from "./utils/LanguageProvider";
-import { BrowserRouter, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Webfont from "webfontloader";
 
 Webfont.load({
@@ -25,7 +25,7 @@ const App: React.FC = () => {
                 height: "100vh",
               }}
             >
-              <Home />
+              <Route path="/" exact component={Home} />
             </Paper>
           </Switch>
         </BrowserRouter>

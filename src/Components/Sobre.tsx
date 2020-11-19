@@ -12,7 +12,6 @@ export const Sobre: React.FC = () => {
       flexDirection: "column",
       height: "100vh",
       justifyContent: "center",
-      marginBottom: 48,
     },
   });
   const classes = styles();
@@ -43,8 +42,8 @@ export const Sobre: React.FC = () => {
               </Typography>
               <Typography style={{ marginTop: 8 }}>
                 Gosto bastante do Automobilismo, domingo é dia de acordar cedo
-                pra ver a Formula 1 ! Além disso estou restaurando um Honda Civic
-                95 :)
+                pra ver a Formula 1 ! Além disso estou restaurando um Honda
+                Civic 95 : )'
               </Typography>
             </Grid>
             <Grid item xs={12} style={{ marginTop: 32 }}>
@@ -82,9 +81,12 @@ export const Sobre: React.FC = () => {
             <Grid item xs={4}>
               <InstagramIcon fontSize="large" />
             </Grid>
+            <Grid item xs={4}>
+              <InstagramIcon fontSize="large" />
+            </Grid>
           </Grid>
         </Grid>
       </div>
     </>
-  );
+  )
 };

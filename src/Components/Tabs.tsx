@@ -1,7 +1,7 @@
 import React from "react";
 import { withStyles, Tabs, TabsProps } from "@material-ui/core";
 
-export const StyledTabs = withStyles({
+export const StyledTabs = withStyles((theme) => ({
   indicator: {
     display: "flex",
     justifyContent: "center",
@@ -9,9 +9,10 @@ export const StyledTabs = withStyles({
     "& > span": {
       maxWidth: 40,
       width: "100%",
-      backgroundColor: "#635ee7",
+      minHeight: 20,
+      backgroundColor: theme.palette.secondary.main,
     },
   },
-})((props: TabsProps) => (
+}))((props: TabsProps) => (
   <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />
 ));
