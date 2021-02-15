@@ -71,23 +71,21 @@ export const Formacoes: React.FC = () => {
   return (
     <>
       <div id="formacoes" className={classes.container}>
-        <Grid container spacing={4} alignItems="center" justify="space-evenly">
+        <Grid container spacing={4} alignItems="center">
           <Grid item lg={12} xs={12}>
             <Typography
               variant="h2"
               color="secondary"
-              style={{ textAlign: "center" }}
+              style={{ textAlign: "center", marginBottom: "10%" }}
             >
               Formação
             </Typography>
           </Grid>
-          <Grid item lg={12} xs={12} style={{ textAlign: "center" }}>
-            {texts.map((text) => (
-              <div key={text.curso} style={{ marginTop: 16 }}>
-                <Formacao {...text} />
-              </div>
-            ))}
-          </Grid>
+          {texts.map((text) => (
+            <Grid item lg={6} xs={12} style={{ textAlign: "center" }}>
+              <Formacao {...text} />
+            </Grid>
+          ))}
         </Grid>
       </div>
     </>

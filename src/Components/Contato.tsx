@@ -7,7 +7,7 @@ export const Contato: React.FC = () => {
     container: {
       display: "flex",
       flexDirection: "column",
-      height: "80vh",
+      height: "70vh",
       justifyContent: "center",
     },
   });
@@ -28,7 +28,7 @@ export const Contato: React.FC = () => {
               Contato
             </Typography>
           </Grid>
-          <Grid item container spacing={2} lg={6} xs={6}>
+          <Grid item container spacing={2} lg={6} xs={12}>
             <Grid item xs={6}>
               <TextField
                 fullWidth
@@ -81,7 +81,7 @@ export const Contato: React.FC = () => {
               </Button>
             </Grid>
           </Grid>
-          <Grid item lg={6} xs={6}>
+          <Grid item lg={6} xs={12}>
             <Typography variant="h4">Gustavo Santos</Typography>
             <Typography variant="h6">FullStack Dev</Typography>
             <Typography variant="h4" style={{ marginTop: 32 }}>

@@ -15,6 +15,9 @@ const fonts = createMuiTheme({
       fontSize: "1rem",
       fontWeight: "bold",
     },
+    h5: {
+      fontWeight: "bold",
+    },
   },
 });
 

@@ -18,11 +18,10 @@ export const Experiencia: React.FC = () => {
 
   const textos: TextoLinhaTempo[] = [
     { esquerda: "Voluntáriado", direita: "Grupo de Apoio a Criança com Câncer" },
-    { esquerda: "quero", direita: "te" },
-    { esquerda: "beijar", direita: "agora" },
-    { esquerda: "muito", direita: "sua" },
-    { direita: "mesmo" },
-    { esquerda: "!" },
+    { esquerda: "Mostada Marketing", direita: "Estágio" },
+    { esquerda: "Monitor", direita: "Saga" },
+    { esquerda: "Klutch", direita: "Estágio" },
+    { esquerda: "Estágio", direita: "Facile" },
   ];
 
   return (
