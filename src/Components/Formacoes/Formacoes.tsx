@@ -2,6 +2,7 @@ import React from "react";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { Grid, Typography } from "@material-ui/core";
 import { Formacao } from "./Formacao";
+import { useMobile } from "../../utils/useMobile";
 
 interface texto {
   title: string;
@@ -12,13 +13,13 @@ interface texto {
   curso: string;
 }
 
-export const Formacoes: React.FC = () => {
+export const Formacoes: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
   const styles = makeStyles((theme) =>
     createStyles({
       container: {
         display: "flex",
         flexDirection: "column",
-        height: "100vh",
+        height: isMobile ? "100%" : "100vh",
         justifyContent: "center",
       },
       bar: {
@@ -55,7 +56,7 @@ export const Formacoes: React.FC = () => {
       escola: "Alura",
       lugar: "Online",
       descricao:
-        "Javascript(React, Typescript, Node),  MongoDb, Go,  Postgress,  Linux,  Vagrant,  Docker e   Kubernetes.",
+        "Javascript(React, Typescript, Node),  MongoDb, Go,  Postgress,  Linux,  Vagrant,  Docker e Kubernetes.",
     },
     {
       title: "Saga",

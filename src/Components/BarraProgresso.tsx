@@ -1,10 +1,11 @@
-import React from "react";
+import React, { createRef, useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import LinearProgress, {
   LinearProgressProps,
 } from "@material-ui/core/LinearProgress";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import useOnScreen from "../utils/useOnScreen";
 
 export function LinearProgressWithLabel(
   props: LinearProgressProps & { value: number }
@@ -35,21 +36,26 @@ export default function LinearWithValueLabel({
   progress: number;
 }) {
   const classes = useStyles();
+  const ref = createRef<HTMLDivElement>();
+  const [percent, setPercent] = useState<number>(0);
+  const isOnScreen = useOnScreen(ref);
 
-  /*   React.useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((prevProgress) =>
-        prevProgress >= 100 ? 10 : prevProgress + 10
-      );
-    }, 800);
-    return () => {
-      clearInterval(timer);
-    };
-  }, []); */
+  useEffect(() => {
+    setTimeout(() => {
+      if (isOnScreen) {
+        if (percent >= progress) {
+          setPercent(progress);
+          return;
+        }
+
+        setPercent(percent + 10);
+      }
+    }, progress);
+  }, [isOnScreen, percent, progress]);
 
   return (
-    <div className={classes.root}>
-      <LinearProgressWithLabel value={progress} />
+    <div ref={ref} className={classes.root}>
+      <LinearProgressWithLabel value={percent} />
     </div>
   );
 }

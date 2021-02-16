@@ -10,18 +10,21 @@ import {
   Experiencia,
   Habilidades,
 } from "../Components/index";
+import { useMobile } from "../utils/useMobile";
+import MobileMenu from "../Components/Nav/MobileMenu";
 
 export const Home: React.FC = () => {
+  const isMobile = useMobile();
   return (
     <>
-      <Nav />
+      {isMobile ? <MobileMenu /> : <Nav />}
       <Container maxWidth="lg">
         <Inicio />
-        <Sobre />
-        <Formacoes />
-        <Habilidades />
-        <Experiencia />
-        <Contato />
+        <Sobre isMobile={isMobile} />
+        <Formacoes isMobile={isMobile} />
+        <Habilidades isMobile={isMobile} />
+        <Experiencia isMobile={isMobile} />
+        <Contato isMobile={isMobile} />
         <Footer />
       </Container>
     </>

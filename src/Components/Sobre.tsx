@@ -3,18 +3,15 @@ import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 
 import { useStyles } from "../utils/useStyles";
-import { useMobile } from "../utils/useMobile";
-import { Personal } from "./Personal";
+import { Personal } from "./PersonalMedia/Personal";
 import { Descricao, DescricaoText } from "./Descricao";
 
-export const Sobre: React.FC = () => {
-  const isMobile = useMobile();
-
+export const Sobre: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
   const styles = useStyles({
     container: {
       display: "flex",
       flexDirection: "column",
-      height: "100vh",
+      height: isMobile ? "100%" : "100vh",
       justifyContent: "center",
     },
   });
@@ -77,7 +74,13 @@ export const Sobre: React.FC = () => {
   return (
     <>
       <div id="sobre" className={classes.container}>
-        <Grid container spacing={4} alignItems="center" justify="space-evenly">
+        <Grid
+          container
+          spacing={4}
+          alignItems="center"
+          direction={!isMobile ? "row" : "column-reverse"}
+          justify="space-evenly"
+        >
           <Grid item lg={12} xs={12}>
             <Typography variant="h2" color="secondary">
               Sobre mim
@@ -102,7 +105,7 @@ export const Sobre: React.FC = () => {
             justify="center"
             alignContent="center"
           >
-            <Personal />
+            <Personal isMobile={isMobile} />
           </Grid>
         </Grid>
       </div>

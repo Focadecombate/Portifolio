@@ -1,15 +1,15 @@
 import { Grid, Typography } from "@material-ui/core";
 import React from "react";
-import { HabilidadeText } from "../utils/types";
-import { useStyles } from "../utils/useStyles";
+import { HabilidadeText } from "../../utils/types";
+import { useStyles } from "../../utils/useStyles";
 import { Habilidade } from "./Habilidade";
 
-export const Habilidades: React.FC = () => {
+export const Habilidades: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
   const styles = useStyles({
     container: {
       display: "flex",
       flexDirection: "column",
-      height: "100vh",
+      height: isMobile ? "100%" : "100vh",
       justifyContent: "center",
       marginBottom: 48,
     },
@@ -24,13 +24,12 @@ export const Habilidades: React.FC = () => {
       name: "Node Js",
       progress: 80,
       description:
-        "Linguagem que mais tenho familiaridade e que mais usei em projetos pessoais e trabalho.",
+        "Rodar javascript no back-end, tipo puré no hotdog cê acha que não é bom mas é!",
     },
     {
       name: "Nest Js",
       progress: 80,
-      description:
-        "Me fez aprender muito sobre estrutura de projetos.",
+      description: "Me fez aprender muito sobre estrutura de projetos.",
     },
     {
       name: "Python",
@@ -50,8 +49,7 @@ export const Habilidades: React.FC = () => {
     {
       name: "Postgres",
       progress: 50,
-      description:
-        "Quando precisa de muitas relações entre tabelas.",
+      description: "Quando precisa de muitas relações entre tabelas.",
     },
   ];
   const frontend: HabilidadeText[] = [
@@ -120,43 +118,11 @@ export const Habilidades: React.FC = () => {
       progress: 60,
       description: "Cache é vida.",
     },
-/*     {
+    /*     {
       name: "Nginx",
       progress: 60,
       description: "Reverse Proxy Top.",
     }, */
-  ];
-  const design: HabilidadeText[] = [
-    {
-      name: "Photoshop",
-      progress: 80,
-      description: "Mexo desde os 14 pra fazer uns memes e umas artes.",
-    },
-    {
-      name: "XD",
-      progress: 80,
-      description: "Meu programa favorito pra UI/UX.",
-    },
-    {
-      name: "Figma",
-      progress: 60,
-      description: "Tentando roubar a vaga de programa favorito de UI/UX.",
-    },
-    {
-      name: "Ilustrator",
-      progress: 70,
-      description: "Falou vetor falou ilustrator!",
-    },
-    {
-      name: "Premiere",
-      progress: 70,
-      description: "Comecei a usar pra editar os curtas do colégio.",
-    },
-    {
-      name: "After Effects",
-      progress: 50,
-      description: "O rei dos green screen.",
-    },
   ];
 
   return (
@@ -168,7 +134,7 @@ export const Habilidades: React.FC = () => {
               Habilidades
             </Typography>
           </Grid>
-          <Grid item lg={3} xs={3}>
+          <Grid item lg={3} xs={12}>
             <Typography variant="h4">FRONT-END</Typography>
             {frontend.map((habilidade) => (
               <>
@@ -178,7 +144,7 @@ export const Habilidades: React.FC = () => {
               </>
             ))}
           </Grid>
-          <Grid item lg={3} xs={3}>
+          <Grid item lg={3} xs={12}>
             <Typography variant="h4">BACK-END</Typography>
             {backend.map((habilidade) => (
               <>
@@ -188,19 +154,9 @@ export const Habilidades: React.FC = () => {
               </>
             ))}
           </Grid>
-          <Grid item lg={3} xs={3}>
+          <Grid item lg={3} xs={12}>
             <Typography variant="h4">DEVOPS</Typography>
             {devops.map((habilidade) => (
-              <>
-                <Grid item xs={12} className={classes.itens}>
-                  <Habilidade {...habilidade} />
-                </Grid>
-              </>
-            ))}
-          </Grid>
-          <Grid item lg={3} xs={3}>
-            <Typography variant="h4">DESIGN</Typography>
-            {design.map((habilidade) => (
               <>
                 <Grid item xs={12} className={classes.itens}>
                   <Habilidade {...habilidade} />

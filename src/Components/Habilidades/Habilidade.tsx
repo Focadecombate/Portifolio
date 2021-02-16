@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography } from "@material-ui/core";
-import LinearWithValueLabel from "./BarraProgresso";
-import { HabilidadeText } from "../utils/types";
+import LinearWithValueLabel from "../BarraProgresso";
+import { HabilidadeText } from "../../utils/types";
 
 export const Habilidade: React.FC<HabilidadeText> = ({
   description,

@@ -1,9 +1,9 @@
-import { Nav } from './Nav'
-import { Contato } from './Contato'
+import { Nav } from './Nav/Nav'
+import { Contato } from './Contato/Contato'
 import { Inicio } from './Inicio'
 import { Footer } from './Footer'
-import { Formacoes } from './Formacoes'
-import { Habilidades } from './Habilidades'
+import { Formacoes } from './Formacoes/Formacoes'
+import { Habilidades } from './Habilidades/Habilidades'
 import { Sobre } from './Sobre'
 import { Experiencia } from './Experiencia'
 

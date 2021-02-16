@@ -1,13 +1,14 @@
 import { Button, Grid, TextField, Typography } from "@material-ui/core";
 import React from "react";
-import { useStyles } from "../utils/useStyles";
+import { useStyles } from "../../utils/useStyles";
 
-export const Contato: React.FC = () => {
+export const Contato: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
+
   const styles = useStyles({
     container: {
       display: "flex",
       flexDirection: "column",
-      height: "70vh",
+      height: isMobile ? "100%" : "70vh",
       justifyContent: "center",
     },
   });

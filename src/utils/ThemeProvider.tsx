@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Theming } from "../Theme";
 
 const ThemeContext = React.createContext(false);
@@ -13,10 +13,13 @@ export function useUpdateTheme() {
 }
 
 export const ThemeProvider: React.FC = ({ children }) => {
-  const [darkTheme, setdarkTheme] = useState(false);
+  const getTheme = sessionStorage.getItem("darkTheme");
+  const [darkTheme, setdarkTheme] = useState(getTheme === "true" ? true : false);
 
   function toggleDark() {
-    setdarkTheme(!darkTheme);
+    const theme = !darkTheme;
+    setdarkTheme(theme);
+    sessionStorage.setItem("darkTheme", theme.toString());
   }
 
   return (
