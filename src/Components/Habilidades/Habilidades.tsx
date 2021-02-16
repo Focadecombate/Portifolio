@@ -1,11 +1,13 @@
 import { Grid, Typography } from "@material-ui/core";
-import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import React, { createRef } from "react";
+import useChangeNav from "../../Hooks/ChangeNavToPart";
 import { HabilidadeText } from "../../utils/types";
-import { useStyles } from "../../utils/useStyles";
+import List from "../List/List";
 import { Habilidade } from "./Habilidade";
 
 export const Habilidades: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
-  const styles = useStyles({
+  const useStyles = makeStyles({
     container: {
       display: "flex",
       flexDirection: "column",
@@ -17,7 +19,7 @@ export const Habilidades: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
       marginTop: 16,
     },
   });
-  const classes = styles();
+  const classes = useStyles();
 
   const backend: HabilidadeText[] = [
     {
@@ -125,6 +127,9 @@ export const Habilidades: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
     }, */
   ];
 
+  const ref = createRef<HTMLDivElement>();
+  useChangeNav(3, ref);
+
   return (
     <>
       <div id="habilidades" className={classes.container}>
@@ -136,33 +141,27 @@ export const Habilidades: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
           </Grid>
           <Grid item lg={3} xs={12}>
             <Typography variant="h4">FRONT-END</Typography>
-            {frontend.map((habilidade) => (
-              <>
-                <Grid item xs={12} className={classes.itens}>
-                  <Habilidade {...habilidade} />
-                </Grid>
-              </>
-            ))}
+            <List<HabilidadeText, {}>
+              Component={Habilidade}
+              array={frontend}
+              keyProp="name"
+            ></List>
           </Grid>
-          <Grid item lg={3} xs={12}>
+          <Grid ref={ref} item lg={3} xs={12}>
             <Typography variant="h4">BACK-END</Typography>
-            {backend.map((habilidade) => (
-              <>
-                <Grid item xs={12} className={classes.itens}>
-                  <Habilidade {...habilidade} />
-                </Grid>
-              </>
-            ))}
+            <List<HabilidadeText, {}>
+              Component={Habilidade}
+              array={backend}
+              keyProp="name"
+            ></List>
           </Grid>
           <Grid item lg={3} xs={12}>
             <Typography variant="h4">DEVOPS</Typography>
-            {devops.map((habilidade) => (
-              <>
-                <Grid item xs={12} className={classes.itens}>
-                  <Habilidade {...habilidade} />
-                </Grid>
-              </>
-            ))}
+            <List<HabilidadeText, {}>
+              Component={Habilidade}
+              array={devops}
+              keyProp="name"
+            ></List>
           </Grid>
         </Grid>
       </div>

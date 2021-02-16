@@ -5,7 +5,7 @@ import LinearProgress, {
 } from "@material-ui/core/LinearProgress";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import useOnScreen from "../utils/useOnScreen";
+import useOnScreen from "../../Hooks/useOnScreen";
 
 export function LinearProgressWithLabel(
   props: LinearProgressProps & { value: number }
@@ -41,16 +41,14 @@ export default function LinearWithValueLabel({
   const isOnScreen = useOnScreen(ref);
 
   useEffect(() => {
-    setTimeout(() => {
-      if (isOnScreen) {
-        if (percent >= progress) {
-          setPercent(progress);
-          return;
-        }
-
-        setPercent(percent + 10);
+    if (isOnScreen) {
+      if (percent >= progress) {
+        setPercent(progress);
+        return;
       }
-    }, progress);
+
+      setPercent(percent + 20);
+    }
   }, [isOnScreen, percent, progress]);
 
   return (

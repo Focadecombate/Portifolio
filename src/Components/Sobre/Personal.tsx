@@ -25,28 +25,48 @@ export const Personal: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
             item
             xs={3}
           >
-            <LinkedInIcon fontSize="large" />
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.linkedin.com/in/gustavo-santos-76330676/"
+            >
+              <LinkedInIcon color="secondary" fontSize="large" />
+            </a>
           </Grid>
           <Grid
             style={{ display: "flex", justifyContent: "center" }}
             item
             xs={3}
           >
-            <GitHubIcon fontSize="large" />
+            <a
+              href="https://github.com/Focadecombate"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GitHubIcon color="secondary" fontSize="large" />
+            </a>
           </Grid>
           <Grid
             style={{ display: "flex", justifyContent: "center" }}
             item
             xs={3}
           >
-            <InstagramIcon fontSize="large" />
+            <a
+              href="https://www.instagram.com/gustavo14567/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <InstagramIcon color="secondary" fontSize="large" />
+            </a>
           </Grid>
           <Grid
             style={{ display: "flex", justifyContent: "center" }}
             item
             xs={3}
           >
-            <TwitterIcon fontSize="large" />
+            <a href="https://twitter.com/focadecombate" target="_blank" rel="noopener noreferrer">
+              <TwitterIcon color="secondary" fontSize="large" />
+            </a>
           </Grid>
         </Grid>
       )}

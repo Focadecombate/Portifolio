@@ -1,10 +1,11 @@
-import React from "react";
+import React, { createRef } from "react";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { Grid, Typography } from "@material-ui/core";
 import { Formacao } from "./Formacao";
-import { useMobile } from "../../utils/useMobile";
+import List from "../List/List";
+import useChangeNav from "../../Hooks/ChangeNavToPart";
 
-interface texto {
+interface FormacaoTexto {
   title: string;
   tempo: string;
   lugar: string;
@@ -39,7 +40,7 @@ export const Formacoes: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
   );
   const classes = styles();
 
-  const texts: texto[] = [
+  const FormacaoTextos: FormacaoTexto[] = [
     {
       title: "Curso Superior",
       curso: "Sistemas De Informação",
@@ -69,6 +70,9 @@ export const Formacoes: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
     },
   ];
 
+  const ref = createRef<HTMLDivElement>();
+  useChangeNav(2, ref);
+
   return (
     <>
       <div id="formacoes" className={classes.container}>
@@ -82,11 +86,12 @@ export const Formacoes: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
               Formação
             </Typography>
           </Grid>
-          {texts.map((text) => (
-            <Grid item lg={6} xs={12} style={{ textAlign: "center" }}>
-              <Formacao {...text} />
-            </Grid>
-          ))}
+          <List<FormacaoTexto, {}>
+            array={FormacaoTextos}
+            keyProp="title"
+            Component={Formacao}
+          ></List>
+          <div ref={ref}></div>
         </Grid>
       </div>
     </>

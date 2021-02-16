@@ -39,7 +39,7 @@ export const Formacao: React.FC<Props> = ({
   const classes = styles();
   return (
     <>
-      <Grid item lg={12} xs={12} style={{ textAlign: "center" }}>
+      <Grid item lg={6} xs={12} style={{ textAlign: "center" }}>
         <Typography variant="h6" style={{ fontWeight: "bold" }}>
           {" "}
           {title}{" "}

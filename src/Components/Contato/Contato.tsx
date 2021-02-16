@@ -1,18 +1,21 @@
 import { Button, Grid, TextField, Typography } from "@material-ui/core";
-import React from "react";
-import { useStyles } from "../../utils/useStyles";
+import { makeStyles } from "@material-ui/core/styles";
+import React, { createRef } from "react";
+import useChangeNav from "../../Hooks/ChangeNavToPart";
 
 export const Contato: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
-
-  const styles = useStyles({
+  const useStyles = makeStyles({
     container: {
       display: "flex",
       flexDirection: "column",
-      height: isMobile ? "100%" : "70vh",
-      justifyContent: "center",
+      height: isMobile ? "100%" : "100vh",
+      justifyContent: "sp",
     },
   });
-  const classes = styles();
+  const classes = useStyles();
+
+  const ref = createRef<HTMLDivElement>();
+  useChangeNav(5, ref);
 
   return (
     <>
@@ -29,7 +32,7 @@ export const Contato: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
               Contato
             </Typography>
           </Grid>
-          <Grid item container spacing={2} lg={6} xs={12}>
+          <Grid ref={ref} item container spacing={2} lg={6} xs={12}>
             <Grid item xs={6}>
               <TextField
                 fullWidth

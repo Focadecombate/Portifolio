@@ -1,16 +1,17 @@
-import React, { useState } from "react";
-import { Box, Container } from "@material-ui/core/";
+import React from "react";
+import { Box, Container, IconButton, Tab, Tabs } from "@material-ui/core/";
 import { makeStyles } from "@material-ui/core/styles";
-import { useUpdateTheme } from "../../utils/ThemeProvider";
-import { StyledTab } from "./Tab";
-import { StyledTabs } from "./Tabs";
+import { useUpdateTheme, useTheme } from "../../Hooks/ThemeProvider";
 import { NavHashLink } from "react-router-hash-link";
+import { useNav, useUpdateNav } from "../../Hooks/NavProvider";
+import { WbSunny, Brightness2 } from "@material-ui/icons";
 
 export const Nav: React.FC = () => {
   const useStyles = makeStyles((theme) => ({
     navBar: {
       width: "100%",
       margin: 0,
+      padding: "1%",
       position: "fixed",
       backgroundColor: theme.palette.background.default,
     },
@@ -31,10 +32,18 @@ export const Nav: React.FC = () => {
     { title: "Contato", link: "#contato" },
   ];
 
-  const [selected, setSelected] = useState(0);
+  const selected = useNav();
+
+  const setNav = useUpdateNav();
+
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    setNav(newValue);
+  };
 
   const classes = useStyles();
+
   const changeTheme = useUpdateTheme();
+  const theme = useTheme();
   return (
     <>
       <Box
@@ -42,39 +51,34 @@ export const Nav: React.FC = () => {
         flexDirection="row"
         flexWrap="nowrap"
         alignItems="center"
-        marginTop="2%"
         className={classes.navBar}
       >
-        <Container
-          maxWidth="lg"
-          style={{
-            display: "flex",
-            justifyContent: "space-evenly",
-          }}
-        >
-          <StyledTabs
+        <Container maxWidth="lg" style={{ display: "flex" }}>
+          <Tabs
             className={classes.label}
             value={selected}
             aria-label="NavBar"
+            onChange={handleChange}
+            textColor="primary"
+            selectionFollowsFocus
           >
             {navLinks.map((link, index) => (
-              <NavHashLink
+              <Tab
+                component={NavHashLink}
                 smooth
-                style={{ textDecoration: "none" }}
+                value={index}
                 to={link.link}
                 key={link.link}
-              >
-                <StyledTab
-                  value={index}
-                  onClick={() => {
-                    setSelected(index);
-                  }}
-                  label={link.title}
-                />
-              </NavHashLink>
+                onClick={() => {
+                  setNav(index);
+                }}
+                label={link.title}
+              />
             ))}
-            <StyledTab label="Noturno" onClick={changeTheme} />
-          </StyledTabs>
+          </Tabs>
+          <IconButton onClick={changeTheme}>
+            {theme ? <WbSunny /> : <Brightness2 />}
+          </IconButton>
         </Container>
       </Box>
     </>

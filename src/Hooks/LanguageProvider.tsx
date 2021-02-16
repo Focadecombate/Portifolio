@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { languageOptions } from "./types";
+import { languageOptions } from "../utils/types";
 
 const LanguageContext = React.createContext<languageOptions>("portuguese");
 const LanguageUpdateContext = React.createContext(() => {});

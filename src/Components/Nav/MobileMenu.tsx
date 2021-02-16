@@ -2,18 +2,24 @@ import React from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import MenuIcon from "@material-ui/icons/Menu";
 import { IconButton } from "@material-ui/core";
-import { useUpdateTheme } from "../../utils/ThemeProvider";
-import { Brightness2 } from "@material-ui/icons";
+import { useUpdateTheme } from "../../Hooks/ThemeProvider";
+import {
+  Brightness2,
+  Home,
+  Info,
+  LibraryBooks,
+  Mail,
+  Work,
+  List as ListIcon,
+} from "@material-ui/icons";
+import { NavHashLink } from "react-router-hash-link";
 
 const useStyles = makeStyles({
   list: {
@@ -46,6 +52,15 @@ export default function MobileMenu() {
     setOpen(open);
   };
 
+  const navLinks = [
+    { title: "Inicio", link: "#inicio", icon: <Home /> },
+    { title: "Sobre Mim", link: "#sobre", icon: <Info /> },
+    { title: "Formações", link: "#formacoes", icon: <LibraryBooks /> },
+    { title: "Habilidades", link: "#habilidades", icon: <ListIcon /> },
+    { title: "Experiência", link: "#experiencia", icon: <Work /> },
+    { title: "Contato", link: "#contato", icon: <Mail /> },
+  ];
+
   const list = (anchor: Anchor) => (
     <div
       className={clsx(classes.list, {
@@ -56,25 +71,21 @@ export default function MobileMenu() {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
+        {navLinks.map((text) => (
+          <ListItem
+            component={NavHashLink}
+            to={text.link}
+            smooth
+            button
+            key={text.title}
+          >
+            <ListItemIcon>{text.icon}</ListItemIcon>
+            <ListItemText primary={text.title} />
           </ListItem>
         ))}
       </List>
       <Divider />
       <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
         <ListItem button onClick={changeTheme}>
           <ListItemIcon>
             <Brightness2 />

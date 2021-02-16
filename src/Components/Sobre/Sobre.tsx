@@ -1,13 +1,13 @@
-import React from "react";
+import React, { createRef } from "react";
 
 import { Grid, Typography } from "@material-ui/core";
-
-import { useStyles } from "../utils/useStyles";
-import { Personal } from "./PersonalMedia/Personal";
+import { Personal } from "./Personal";
 import { Descricao, DescricaoText } from "./Descricao";
+import { makeStyles } from "@material-ui/styles/";
+import useChangeNav from "../../Hooks/ChangeNavToPart";
 
 export const Sobre: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
-  const styles = useStyles({
+  const useStyles = makeStyles({
     container: {
       display: "flex",
       flexDirection: "column",
@@ -15,7 +15,7 @@ export const Sobre: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
       justifyContent: "center",
     },
   });
-  const classes = styles();
+  const classes = useStyles();
 
   const Text: DescricaoText[] = [
     {
@@ -71,6 +71,9 @@ export const Sobre: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
     },
   ];
 
+  const ref = createRef<HTMLDivElement>();
+  useChangeNav(1, ref);
+
   return (
     <>
       <div id="sobre" className={classes.container}>
@@ -90,7 +93,7 @@ export const Sobre: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
             <Typography variant="h3">Paixões</Typography>
             <Grid item xs={12} style={{ marginTop: 32 }}>
               {Text.map((text) => (
-                <div style={{ marginTop: 16 }}>
+                <div key={text.Title.text} style={{ marginTop: 16 }}>
                   <Descricao {...text} />
                 </div>
               ))}
@@ -101,6 +104,7 @@ export const Sobre: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
             item
             lg={6}
             xs={12}
+            ref={ref}
             spacing={2}
             justify="center"
             alignContent="center"

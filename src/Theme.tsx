@@ -21,7 +21,7 @@ const fonts = createMuiTheme({
   },
 });
 
-const lightTheme = createMuiTheme({
+const LightTheme = createMuiTheme({
   ...fonts,
   palette: {
     primary: { main: "#00272B " },
@@ -30,7 +30,7 @@ const lightTheme = createMuiTheme({
   },
 });
 
-export const darktheme = createMuiTheme({
+export const Darktheme = createMuiTheme({
   ...fonts,
   palette: {
     type: "dark",
@@ -44,9 +44,27 @@ export const Theming: React.FC<{ darkTheme: boolean }> = ({
   children,
   darkTheme,
 }) => {
-  return (
-    <ThemeProvider theme={{ ...(darkTheme ? darktheme : lightTheme) }}>
-      {children}
-    </ThemeProvider>
+  const theme = React.useMemo(
+    () =>
+      darkTheme
+        ? createMuiTheme({
+            ...fonts,
+            palette: {
+              type: "dark",
+              primary: { main: "#06D6A0" },
+              secondary: { main: "#FFFBFF" },
+              background: { default: "#00272B ", paper: "#00272B " },
+            },
+          })
+        : createMuiTheme({
+            ...fonts,
+            palette: {
+              primary: { main: "#00272B " },
+              secondary: { main: "#00272B" },
+              background: { default: "#FFFBFF ", paper: "#FFFBFF " },
+            },
+          }),
+    [darkTheme]
   );
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };

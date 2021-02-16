@@ -7,13 +7,13 @@ import TimelineContent from "@material-ui/lab/TimelineContent";
 import TimelineDot from "@material-ui/lab/TimelineDot";
 import { Typography } from "@material-ui/core";
 import TimelineOppositeContent from "@material-ui/lab/TimelineOppositeContent";
-import { TextosLinhaTempo } from "../../utils/types";
+import { TextosLinhaTempo } from "../../../utils/types";
 
 export const LinhaTempo: React.FC<TextosLinhaTempo> = ({ textos }) => {
   return (
-    <Timeline align="alternate">
+    <>
       {textos.map(({ esquerda, direita }, index) => (
-        <>
+        <React.Fragment key={direita ?? esquerda}>
           {direita ? (
             <TimelineItem key={esquerda ?? direita}>
               {esquerda && (
@@ -38,7 +38,7 @@ export const LinhaTempo: React.FC<TextosLinhaTempo> = ({ textos }) => {
               </TimelineContent>
             </TimelineItem>
           ) : (
-            <TimelineItem  key={esquerda}>
+            <TimelineItem key={esquerda}>
               <TimelineSeparator>
                 <TimelineDot
                   variant="outlined"
@@ -57,8 +57,8 @@ export const LinhaTempo: React.FC<TextosLinhaTempo> = ({ textos }) => {
               </TimelineContent>
             </TimelineItem>
           )}
-        </>
+        </React.Fragment>
       ))}
-    </Timeline>
+    </>
   );
 };
